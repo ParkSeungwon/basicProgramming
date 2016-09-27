@@ -1,0 +1,10 @@
+*.swp
+*.png
+*.x
+*.o
+*~
+*.dvi
+*.log
+*.aux
+*.gz
+*.jpg
