@@ -9,12 +9,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 ~/Programming/basicProgramming/1.c
-badd +0 ~/Programming/basicProgramming/2.c
-badd +0 ~/Programming/basicProgramming/3.c
-badd +0 ~/Programming/basicProgramming/4.c
-badd +0 ~/Programming/basicProgramming/5.c
-badd +0 ~/Programming/basicProgramming/Makefile
-badd +0 ~/Programming/basicProgramming/report.tex
+badd +1 ~/Programming/basicProgramming/2.c
+badd +1 ~/Programming/basicProgramming/3.c
+badd +1 ~/Programming/basicProgramming/4.c
+badd +1 ~/Programming/basicProgramming/5.c
+badd +1 ~/Programming/basicProgramming/Makefile
+badd +1 ~/Programming/basicProgramming/report.tex
+badd +1 ~/Programming/basicProgramming/6.c
+badd +1 ~/Programming/basicProgramming/7.c
 argglobal
 silent! argdel *
 argadd 1.c
@@ -39,12 +41,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 23) / 46)
+let s:l = 6 - ((5 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+6
+normal! 039|
 tabedit ~/Programming/basicProgramming/2.c
 set splitbelow splitright
 set nosplitbelow
@@ -62,12 +64,58 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 23) / 46)
+let s:l = 11 - ((10 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+11
+normal! 013|
+tabedit ~/Programming/basicProgramming/6.c
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+edit ~/Programming/basicProgramming/6.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 19 - ((18 * winheight(0) + 23) / 46)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+19
+normal! 023|
+tabedit ~/Programming/basicProgramming/7.c
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+edit ~/Programming/basicProgramming/7.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 6 - ((5 * winheight(0) + 23) / 46)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+6
+normal! 025|
 tabedit ~/Programming/basicProgramming/3.c
 set splitbelow splitright
 set nosplitbelow
@@ -85,12 +133,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 23) / 46)
+let s:l = 10 - ((9 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+10
+normal! 041|
 tabedit ~/Programming/basicProgramming/4.c
 set splitbelow splitright
 set nosplitbelow
@@ -108,11 +156,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 23) / 46)
+let s:l = 10 - ((9 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
+10
 normal! 043|
 tabedit ~/Programming/basicProgramming/Makefile
 set splitbelow splitright
@@ -154,12 +202,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 56 - ((23 * winheight(0) + 23) / 46)
+let s:l = 43 - ((32 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-56
-normal! 014|
+43
+normal! 0145|
 tabedit ~/Programming/basicProgramming/5.c
 set splitbelow splitright
 set nosplitbelow
@@ -177,13 +225,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 23) / 46)
+let s:l = 11 - ((10 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
-tabnext 6
+11
+normal! 026|
+tabnext 8
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

@@ -2,8 +2,8 @@
 
 int main()
 {
-	float f;
-	printf("값을 입력하시오.");
-	scanf("%f", &f);
-	printf("실수형식으로는 %f이고\n 지수형식으로는 %e입니다.\n", f, f);
+	double a, b;
+	printf("두 개의 실수를 입력하시오.\n");
+	scanf("%lf%lf", &a, &b);
+	printf("합 : %lf\n차 : %lf\n곱 : %lf\n몫 : %lf\n", a+b, a-b, a*b, a/b);
 }

@@ -7,23 +7,40 @@
 \usepackage{listings}
 \usepackage{textcomp}
 \usepackage{courier}
+\usepackage{libertine}
+\usepackage{pgfornament}
+\usepackage{eso-pic}
 \usepackage[hangul]{kotex}
 \linespread{1.3}
 
+\title{
+	\centering
+	\pgfornament[width=12cm,color=teal]{84}\\
+	\vspace{1cm}
+	\fontsize{50}{50} \selectfont {기초 프로그래밍 실습\\10월 1주차}\\
+		\pgfornament[width=12cm,color=teal]{88}\\
+	\vfill}
+\author{
+	\LARGE
+	\begin{tabular}{rl}
+		\hline
+		학번 : & 2016110056\\ 
+		학과 : & 불교학부 \\
+		이름 : & 박승원\\
+		날짜 : & \today\\
+		\hline
+	\end{tabular}\vspace{2cm}
+	\\
+\includegraphics[width=0.5\textwidth]{logo.jpg}
+	}
+\date{}
+
+
 \begin{document}
+\maketitle
 \pagenumbering{gobble}
-\begin{center}
-	\Huge기초프로그래밍 실습 과제\\
-	\vspace{2cm}
-\hfill\includegraphics[height=30pt]{logo.jpg}
-
-\hfill\Large 2016110056 불교학부 박승원
-
-\hfill\today
-\end{center}
-
 \noindent
-\lstset{language=C++, columns=flexible, tabsize=4, frame=shadowbox, showstringspaces=false, breaklines=true, upquote=true, basicstyle=\ttfamily\large}
+\lstset{language=C++, columns=flexible, tabsize=4, frame=shadowbox, showstringspaces=false, breaklines=true, upquote=true, basicstyle=\normalsize}
 \begin{enumerate}
 \includegraphics[page=3, width=\textwidth]{1.pdf}
 \lstinputlisting{1.c}	
@@ -50,12 +67,7 @@
 
 \includegraphics[page=8, width=\textwidth]{1.pdf}
 \lstinputlisting{6.c}
-
-문자열도 컴퓨터에서는 숫자로 표현되며, 그에 대한 표현양식을 어떻게 정해주는가에 따라서 문자로도 혹은 숫자로도 표현된다는 것을 알 수 있다.
-
 \includegraphics[width=\textwidth]{6.png}	
-\lstinputlisting{7.c}	
-\includegraphics[width=\textwidth]{7.png}	
 \end{enumerate}
 
 \end{document}

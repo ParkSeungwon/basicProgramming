@@ -2,9 +2,11 @@
 
 int main()
 {
-	int f;
-	printf("값을 입력하시오.");
-	scanf("%d", &f);
-	
-	printf("8진수로는 %o이고,\n 10진수로는 %d이고,\n 16진수로는 %x입니다..\n", f, f, f);
+	float f;
+	printf("키를 입력하시오.(cm) : ");
+	scanf("%f", &f);
+	float inch = f / 2.54;
+	int feet = inch / 12;
+	inch -= feet * 12;
+	printf("키는 %d 피트 %f 인치 입니다.\n", feet, inch);
 }

@@ -2,10 +2,11 @@
 
 int main()
 {
-	double m, v;
-	printf("질량을 입력하시오.");
-	scanf("%lf", &m);
-	printf("속도를 입력하시오.");
-	scanf("%lf", &v);
-	printf("운동에너지는 %f 입니다.\n", 0.5*m*v*v);
+	int x, y;
+	printf("x좌표를 입력하시오.");
+	scanf("%d", &x);
+	printf("y좌표를 입력하시오.");
+	scanf("%d", &y);
+	int z = x > 0 ? (y > 0 ? 1 : 4) : (y > 0 ? 2 : 3);
+	printf("%d사분면\n", z);
 }

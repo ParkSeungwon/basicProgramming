@@ -2,7 +2,10 @@
 
 int main()
 {
-	float a = 3.32e-3;
-	float b = 9.76e-8;
-	printf("%f\n", a+b);
+	int a, b;
+	printf("정수를 입력하시오.:");
+	scanf("%d", &a);
+	printf("2를 곱하고 싶은 횟수:");
+	scanf("%d", &b);
+	printf("%d<<%d의 값:%d\n", a, b, a<<b);
 }
