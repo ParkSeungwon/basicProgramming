@@ -1,8 +1,17 @@
 #include<stdio.h>
-
+#include<ctype.h>
 int main()
 {
-	printf("\"ASCII code\", \'A\',\'B\',\'C\'\n");
-	printf("\\t \\a \\n\n");
+	printf("문자를 입력하시오.");
+	char c;
+	scanf("%c", &c);
+	c = tolower(c);
+	switch(c) {
+		case 'r': printf("Rectangle"); break;
+		case 't': printf("Triangle"); break;
+		case 'c': printf("Circle"); break;
+		default: printf("Unknown"); 
+	}
+	printf("\n");
 }
 

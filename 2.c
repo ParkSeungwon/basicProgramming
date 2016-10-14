@@ -2,11 +2,9 @@
 
 int main()
 {
-	float f;
-	printf("키를 입력하시오.(cm) : ");
-	scanf("%f", &f);
-	float inch = f / 2.54;
-	int feet = inch / 12;
-	inch -= feet * 12;
-	printf("키는 %d 피트 %f 인치 입니다.\n", feet, inch);
+	int a, b;
+	printf("두 개의 정수를 입력하시오.");
+	scanf("%d %d", &a, &b);
+	if(a % b == 0) printf("약수입니다.\n");
+	else printf("약수가 아닙니다.\n");
 }

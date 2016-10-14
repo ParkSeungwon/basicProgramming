@@ -1,9 +1,16 @@
 #include<stdio.h>
+#include<ctype.h>
 
 int main()
 {
-	double a, b;
-	printf("두 개의 실수를 입력하시오.\n");
-	scanf("%lf%lf", &a, &b);
-	printf("합 : %lf\n차 : %lf\n곱 : %lf\n몫 : %lf\n", a+b, a-b, a*b, a/b);
+	char c;
+	printf("문자를 입력하시오");
+	scanf("%c", &c);
+	c = tolower(c);
+	switch(c) {
+		case 'a': case 'e': case 'i': case 'o': case 'u': 
+			printf("모음입니다.\n"); 
+			break;
+		default: printf("자음입니다.\n");
+	}
 }

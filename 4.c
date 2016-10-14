@@ -2,10 +2,9 @@
 
 int main()
 {
-	int a, b;
-	printf("정수를 입력하시오.:");
-	scanf("%d", &a);
-	printf("2를 곱하고 싶은 횟수:");
-	scanf("%d", &b);
-	printf("%d<<%d의 값:%d\n", a, b, a<<b);
+	int weight, height;
+	printf("체중과 키를 입력하세요.");
+	scanf("%d %d", &weight, &height);
+	if(weight > (height - 100) * 0.9) printf("과체중입니다.\n");
+	else printf("저체중입니다..\n");
 }
