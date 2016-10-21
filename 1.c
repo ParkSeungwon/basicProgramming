@@ -3,14 +3,23 @@
 
 int main()
 {
-	char c;
-	printf("문자를 입력하시오");
-	scanf("%c", &c);
-	c = tolower(c);
-	switch(c) {
-		case 'a': case 'e': case 'i': case 'o': case 'u': 
-			printf("모음입니다.\n"); 
-			break;
-		default: printf("자음입니다.\n");
+	int sum = 0;
+	for(int i=3; i<=100; i+=3) sum += i;
+	printf("%d\n", sum);
+
+	int i=0;
+	sum = 0;
+	while(i <= 100) {
+		sum += i;
+		i += 3;
 	}
+	printf("%d\n", sum);
+
+	sum = 0;
+	i = 0;
+	do {
+		sum += i;
+		i += 3;
+	} while(i <= 100);
+	printf("%d\n", sum);
 }

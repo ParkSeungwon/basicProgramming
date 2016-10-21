@@ -2,12 +2,14 @@
 
 int main()
 {
-	int time, age, price;
-	printf("현재 시간과 나이를 입력하세요.");
-	scanf("%d %d", &time, &age);
-	if(time < 17) {
-		if(age > 12 && age < 65) price = 25000;
-		else price = 34000;
-	} else price = 10000;
-	printf("요금은 %d입니다.\n", price);
+	int sum = 0;
+	int prev;
+	for(int i=1; ; i++) {
+		prev = sum;
+		sum += i;
+		if(sum > 10000) {
+			printf("1부터 %d까지의 합이 %d입니다.\n", i-1, prev);
+			break;
+		}
+	}
 }
