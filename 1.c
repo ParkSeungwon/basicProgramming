@@ -1,25 +1,17 @@
 #include<stdio.h>
 #include<ctype.h>
 
+int get_tax(int income) {
+	int over = income - 10000000;
+	if(over < 0) over = 0;
+	int lower = income % 10000000;
+	return over * 0.08 + lower * 0.1;
+}
+
 int main()
 {
-	int sum = 0;
-	for(int i=3; i<=100; i+=3) sum += i;
-	printf("%d\n", sum);
-
-	int i=0;
-	sum = 0;
-	while(i <= 100) {
-		sum += i;
-		i += 3;
-	}
-	printf("%d\n", sum);
-
-	sum = 0;
-	i = 0;
-	do {
-		sum += i;
-		i += 3;
-	} while(i <= 100);
-	printf("%d\n", sum);
+	int income;
+	printf("수입을 입력하세요. ");
+	scanf("%d", &income);
+	printf("당신의 세금은 %d입니다.", get_tax(income));
 }

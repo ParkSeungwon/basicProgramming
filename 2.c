@@ -1,10 +1,15 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int b_rand() { 
+	return rand() % 2;
+}
 
 int main()
 {
-	for(int i=1; i<=7; i++) {
-		for(int j=0; j<7-i; j++) printf(" ");
-		for(int k=0; k<i; k++) printf("*");
-		printf("\n");
+	srand(time(NULL));
+	for(int i=0; i<5; i++) {
+		printf("%d ", b_rand());
 	}
 }

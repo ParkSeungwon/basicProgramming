@@ -1,15 +1,17 @@
 #include<stdio.h>
 
+int is_reap(int y) {
+	if(y % 400 == 0) return 1;
+	if(y % 100 == 0) return 0;
+	if(y % 4 == 0) return 1;
+	return 0;
+}
+
 int main()
 {
-	float f;
-	int n = 0;
-	float sum = 1;
-	printf("실수의 값을 입력하시오.");
-	scanf("%f", &f);
-	printf("거듭제곱 횟수를 입력하시오.");
-	scanf("%d", &n);
-	for(int i=0; i<n; i++) sum *= f;
-	printf("결과값은 %f입니다.\n", sum);
+	int y;
+	printf("연도를 입력하시오.");
+	scanf("%d", &y);
+	printf("%d년은 %d일입니다.", y, 365+is_reap(y));
 }
 
