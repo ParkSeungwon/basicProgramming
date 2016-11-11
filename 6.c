@@ -1,17 +1,13 @@
 #include<stdio.h>
 
-int is_reap(int y) {
-	if(y % 400 == 0) return 1;
-	if(y % 100 == 0) return 0;
-	if(y % 4 == 0) return 1;
-	return 0;
+int get_tri_number(int n) {
+	if(n == 1) return 1;
+	return get_tri_number(n-1) + n;
 }
 
 int main()
 {
-	int y;
-	printf("연도를 입력하시오.");
-	scanf("%d", &y);
-	printf("%d년은 %d일입니다.", y, 365+is_reap(y));
+	for(int i=1; i<10; i++) 
+		printf("%d번째 삼각수는 %d입니다.\n", i, get_tri_number(i));
 }
 

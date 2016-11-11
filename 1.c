@@ -1,17 +1,49 @@
 #include<stdio.h>
 #include<ctype.h>
 
-int get_tax(int income) {
-	int over = income - 10000000;
-	if(over < 0) over = 0;
-	int lower = income % 10000000;
-	return over * 0.08 + lower * 0.1;
+int add(int a, int b) { 
+	static int count = 0;
+	count++;
+	printf("덧셈은 총 %d번 호출되었습니다.\n", count);
+	printf("연산 결과 : %d\n", a+b);
+	return a+b;
+}
+int sub(int a, int b) { 
+	static int count = 0;
+	count++;
+	printf("뺄셈은 총 %d번 호출되었습니다.\n", count);
+	printf("연산 결과 : %d\n", a-b);
+	return a-b;
+}
+int mul(int a, int b) { 
+	static int count = 0;
+	count++;
+	printf("곱셈은 총 %d번 호출되었습니다.\n", count);
+	printf("연산 결과 : %d\n", a*b);
+	return a*b;
+}
+int div(int a, int b) { 
+	static int count = 0;
+	count++;
+	printf("나눗셈은 총 %d번 호출되었습니다.\n", count);
+	printf("연산 결과 : %d\n", a/b);
+	return a/b;
 }
 
 int main()
 {
-	int income;
-	printf("수입을 입력하세요. ");
-	scanf("%d", &income);
-	printf("당신의 세금은 %d입니다.", get_tax(income));
+	int a, b;
+	char c;
+	int end = 0;
+	while(!end) {
+		printf("연산을 입력하시오.");
+		scanf("%d%c%d", &a, &c, &b);
+		switch(c) {
+			case '+': add(a, b); break;
+			case '-': sub(a, b);break;
+			case '*': mul(a, b);break;
+			case '/': div(a, b);break;
+			default: end=1;
+		}
+	}
 }

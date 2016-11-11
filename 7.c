@@ -1,27 +1,23 @@
 #include<stdio.h>
 
-char menus[4][20] = {"샌드위치", "햄버거", "피자", "종료"};
-
-void print_menu() {
-	for(int i=1; i<5; i++) printf("%d. %s\n", i, menus[i-1]);
-	printf("원하는 메뉴를 선택하시오.");
+int nCr(int n, int r) {
+	if(r == 0 || r == n) return 1;
+	return nCr(n-1, r-1) + nCr(n-1, r);
 }
-void call_menu(int n) {
-	printf("%s 메뉴 호출\n", menus[n]);
-}
-
-int check_menu_number(int n) {
-	if(n > 0 && n < 4) return 1;
-	else return 0;
+int factorial(int n) {
+	int r = 1;
+	for(int i=1; i<=n; i++) r *= i;
+	return r;
 }
 
-int main()
-{
-	int n = -1;
-	while(n != 4) {
-		if(check_menu_number(n)) call_menu(n-1);
-		print_menu();
-		scanf("%d", &n);
-	}
+long nCk(int n, int k) {
+	long r = 1;
+	for(int i=k+1; i<=n; i++) r *= i;
+	for(int i=1; i<=n-k; i++) r /= i;
+	return r;
 }
 
+int main() {
+	printf("%d\n", nCr(10, 3));
+	printf("%d\n", nCk(10, 3));
+}
