@@ -1,29 +1,18 @@
 #include<stdio.h>
 
-int money = 0;
-void save(int m) {
-	money += m;
-}
-void draw(int m) {
-	money -= m;
-}
-
 int main() {
-	int menu, m, end = 0;
-	while(!end) {
-		printf("메뉴를 선택하세요: 저축(1), 인출(2)");
-		scanf("%d", &menu);
-		if(menu == 1) {
-			printf("저축할 금액:");
-			scanf("%d", &m);
-			save(m);
-		} else if(menu == 2) {
-			printf("인출할 금액:");
-			scanf("%d", &m);
-			draw(m);
-		} else end = 1;
-		printf("현재 잔액은 %d입니다.\n", money);
+	int n;
+	printf("2진수로 변환할 10진수를 입력하세요.");
+	scanf("%d", &n);
+	int binary[23] = {0,};
+	int i;
+	for (i=0;i<23&&n>0;i++) {
+		binary[i] = n % 2 ;
+		n = n / 2 ;
 	}
+	for(i=22; !binary[i]; i--);
+	for(; i>=0; i--) printf("%d", binary[i]);
+	printf("\n");
 }
 
 

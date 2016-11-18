@@ -1,49 +1,15 @@
 #include<stdio.h>
-#include<ctype.h>
-
-int add(int a, int b) { 
-	static int count = 0;
-	count++;
-	printf("덧셈은 총 %d번 호출되었습니다.\n", count);
-	printf("연산 결과 : %d\n", a+b);
-	return a+b;
-}
-int sub(int a, int b) { 
-	static int count = 0;
-	count++;
-	printf("뺄셈은 총 %d번 호출되었습니다.\n", count);
-	printf("연산 결과 : %d\n", a-b);
-	return a-b;
-}
-int mul(int a, int b) { 
-	static int count = 0;
-	count++;
-	printf("곱셈은 총 %d번 호출되었습니다.\n", count);
-	printf("연산 결과 : %d\n", a*b);
-	return a*b;
-}
-int div(int a, int b) { 
-	static int count = 0;
-	count++;
-	printf("나눗셈은 총 %d번 호출되었습니다.\n", count);
-	printf("연산 결과 : %d\n", a/b);
-	return a/b;
-}
-
+#include<stdlib.h>
+#include<time.h>
 int main()
 {
-	int a, b;
-	char c;
-	int end = 0;
-	while(!end) {
-		printf("연산을 입력하시오.");
-		scanf("%d%c%d", &a, &c, &b);
-		switch(c) {
-			case '+': add(a, b); break;
-			case '-': sub(a, b);break;
-			case '*': mul(a, b);break;
-			case '/': div(a, b);break;
-			default: end=1;
-		}
+	int num[10] = {0,};
+	srand(time(NULL));
+	for(int i=0; i<100; i++) num[rand()%10]++;
+	int max = -1, index;
+	for(int i=0; i<10; i++) if(max < num[i]) {
+		index = i; 
+		max = num[i];
 	}
+	printf("%d가 %d번으로 가장 많이 생성되었습니다.\n", index, num[index]);
 }
