@@ -1,24 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
+void array_fill(int *A, int size) {
+	int i;
+	for(i=0; i<size ; i++){
+		A[i] = rand() % 100;
+	}
+}
 
 int main()
 {
-	int ar[3][11];
-	for(int i=1; i<11; i++) {
-		ar[0][i] = i;
-		ar[1][i] = i * i;
-		ar[2][i] = i * i * i;
-	}
-
-	for(int y=0; y<3; y++) {
-		for(int x=1; x<11; x++) printf("%d ", ar[y][x]);
-		printf("\n");
-	}
-
-	printf("세제곱값을 입력하세요.");
-	int n, k;
-	scanf("%d", &k);
-	for(int i=1; i<11; i++) if(k == ar[2][i]) n = ar[0][i];
-	printf("%d의 세제곱근은 %d입니다.\n", k, n);
-
+	srand(time(0));
+	int A[20];
+	array_fill(A, 20);
+	for(int i=0; i<20; i++) printf("%d ", A[i]);
 }

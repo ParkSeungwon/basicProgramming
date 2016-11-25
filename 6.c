@@ -1,13 +1,17 @@
 #include<stdio.h>
 
-int get_tri_number(int n) {
-	if(n == 1) return 1;
-	return get_tri_number(n-1) + n;
+void array_copy (int *A , int *B , int size) {
+	int i ;
+	for(i= 0 ; i < size ; i++) {
+		B[i] = A[i];
+	}
 }
 
 int main()
 {
-	for(int i=1; i<10; i++) 
-		printf("%d번째 삼각수는 %d입니다.\n", i, get_tri_number(i));
+	int A[10] = {4, 4, 3, 2, 1, 4, 4, 3, 3, 2};
+	int B[10];
+	array_copy(A, B, 10);
+	for(int i=0; i<10; i++) printf("%d ", B[i]);
 }
 

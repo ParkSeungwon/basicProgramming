@@ -1,18 +1,17 @@
 #include<stdio.h>
 
-int main() {
-	int n;
-	printf("2진수로 변환할 10진수를 입력하세요.");
-	scanf("%d", &n);
-	int binary[23] = {0,};
+void convert(double *grades, double *scores, int size){
 	int i;
-	for (i=0;i<23&&n>0;i++) {
-		binary[i] = n % 2 ;
-		n = n / 2 ;
+	for(i=0; i<size; i++){
+		scores[i] = grades[i] * 100 / 4.3;
 	}
-	for(i=22; !binary[i]; i--);
-	for(; i>=0; i--) printf("%d", binary[i]);
-	printf("\n");
+} 
+
+int main() {
+	double grades[10] = {4.2, 4.1, 3.8, 2.3, 1.2, 4.2, 4.0, 3.5, 3.0, 2.8};
+	double scores[10];
+	convert(grades, scores, 10);
+	for(int i=0; i<10; i++) printf("%lf ", scores[i]);
 }
 
 
