@@ -1,20 +1,24 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<time.h>
+#include<string.h>
+#include<ctype.h>
 
 int main() {
-	srand(time(NULL));
-	int exam[10][3];
-	for(int y=0; y<10; y++) for(int x=0; x<3; x++) exam[y][x] = rand() % 100;
-	printf("학번 :	 시험1	시험2	시험3	최대 	최소\n");
-	for(int y=0; y<10; y++) {
-		int max=0, min=100;
-		for(int x=0; x<3; x++) {
-			exam[y][x] > max ? max = exam[y][x] : 0;
-			exam[y][x] < min ? min = exam[y][x] : 0;
-			if(x == 2) printf("%d :	 %d	%d	%d	%d	 %d\n", y+1, exam[y][0], exam[y][1], exam[y][2], max, min);
-	}
-	}
+	char b[80], f[20], r[20], tmp[20];
+	printf("문자열을 입력하시오.");
+	fgets(b, 80, stdin);
+	printf("찾을 문자열:");
+	scanf("%s", f);
+	printf("바꿀 문자열:");
+	scanf("%s", r);
+	printf("결과:");
+	int lf = strlen(f);
+	char* p = strstr(b, f);
+	strcpy(tmp, p+lf);
+	strcpy(p, r);
+	strcat(p, tmp);
+	printf(b);
 }
+
 
 

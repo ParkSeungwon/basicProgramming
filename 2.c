@@ -1,23 +1,18 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<time.h>
-int main()
+#include<ctype.h>
+int get_response(char* prompt)
 {
-	int sum = 0;
-	int ar[3][5] = {12,56,32,16,98, 99,56,34,41,3, 65,3,87,78,21};
-	for(int y=0; y<3; y++) for(int x=0; x<5; x++) {
-		sum += ar[y][x];
-		if(x == 4) {
-			printf("%d행의 합계는 %d입니다.\n", y+1, sum);
-			sum = 0;
-		}
-	}
-	sum = 0;
-	for(int x=0; x<5; x++) for(int y=0; y<3; y++) {
-		sum += ar[y][x];
-		if(y == 2) {
-			printf("%d열의 합계는 %d입니다.\n", x+1, sum);
-			sum = 0;
-		}
-	}
+	char b[50];
+	printf(prompt);
+	gets(b);
+	for(int i=0; i<50; i++) b[i] = tolower(b[i]);
+	if(!strcmp(b , "yes") || !strcmp(b, "ok")) return 1;
+	else if(!strcmp(b, "no")) return 0;
+	else return -1;
+}
+
+int main() {
+	if(get_response("답변을 입력하세요.yes/no")) printf("긍정\n");
+	else printf("부정\n");
 }

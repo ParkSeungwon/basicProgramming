@@ -1,15 +1,20 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<time.h>
+
+char b[50];
+int c[50];
+void check(char ch) {
+	for(int i=0; i<50; i++) {
+		if(b[i] == ch) {
+			c[i]++;
+			break;
+		}
+	}
+}
 int main()
 {
-	int num[10] = {0,};
-	srand(time(NULL));
-	for(int i=0; i<100; i++) num[rand()%10]++;
-	int max = -1, index;
-	for(int i=0; i<10; i++) if(max < num[i]) {
-		index = i; 
-		max = num[i];
-	}
-	printf("%d가 %d번으로 가장 많이 생성되었습니다.\n", index, num[index]);
+	printf("문자열을 입력하세요");
+	gets(b);
+	for(int i=0; b[i]; i++) check(b[i]);
+	for(int i=0; i<50; i++) if(c[i]) printf("%c : %d\n", b[i], c[i]);
 }
