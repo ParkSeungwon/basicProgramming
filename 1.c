@@ -1,20 +1,20 @@
 #include<stdio.h>
 #include<stdlib.h>
+struct Point {
+	int x, y;
+};
 
-char b[50];
-int c[50];
-void check(char ch) {
-	for(int i=0; i<50; i++) {
-		if(b[i] == ch) {
-			c[i]++;
-			break;
-		}
-	}
+int equal(struct Point a, struct Point b) {
+	if(a.x == b.x && a.y == b.y) return 1;
+	else return 0;
 }
-int main()
-{
-	printf("문자열을 입력하세요");
-	gets(b);
-	for(int i=0; b[i]; i++) check(b[i]);
-	for(int i=0; i<50; i++) if(c[i]) printf("%c : %d\n", b[i], c[i]);
+
+int quadrant(struct Point p) {
+	return p.x > 0 ? (p.y > 0 ? 1 : 4) : (p.y > 0 ? 2 : 3);
+}
+
+int main() {
+	struct Point a = {3, 4}, b = {3, 4}, c = {-1, -2};
+	printf("%d %d\n", equal(a, b), equal(b, c));
+	printf("%d %d\n", quadrant(a), quadrant(c));
 }

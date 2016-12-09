@@ -1,23 +1,28 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<ctype.h>
+
+typedef struct PhoneBook {
+	char name[30];
+	char tel[20];
+	char mobile[20];
+} PhoneBook;
 
 int main() {
-	char b[80], f[20], r[20], tmp[20];
-	printf("문자열을 입력하시오.");
-	fgets(b, 80, stdin);
-	printf("찾을 문자열:");
-	scanf("%s", f);
-	printf("바꿀 문자열:");
-	scanf("%s", r);
-	printf("결과:");
-	int lf = strlen(f);
-	char* p = strstr(b, f);
-	strcpy(tmp, p+lf);
-	strcpy(p, r);
-	strcat(p, tmp);
-	printf(b);
+	PhoneBook book[5];
+	for(int i=0; i<5; i++) {
+		printf("이름을 입력하세요.");
+		scanf("%s", book[i].name);
+		printf("집전화번호를 입력하세요.");
+		scanf("%s", book[i].tel);
+		printf("핸드폰 번호를 입력하세요.");
+		scanf("%s", book[i].mobile);
+	}
+	char bf[30];
+	printf("찾을 이름을 입력하세요.");
+	scanf("%s", bf);
+	for(int i=0; i<5; i++) 
+		if(!strcmp(book[i].name, bf)) printf("%s : %s, %s\n", book[i].name, book[i].tel, book[i].mobile);
 }
 
 
