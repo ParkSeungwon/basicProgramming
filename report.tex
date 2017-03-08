@@ -17,7 +17,7 @@
 	\centering
 	\pgfornament[width=12cm,color=teal]{84}\\
 	\vspace{1cm}
-	\fontsize{50}{50} \selectfont {기초 프로그래밍 실습\\12월 2주차}\\
+	\fontsize{50}{50} \selectfont {컴퓨터 알고리즘과 실습\\3월 2주차}\\
 		\pgfornament[width=12cm,color=teal]{88}\\
 	\vfill}
 \author{
@@ -41,29 +41,49 @@
 \pagenumbering{gobble}
 \noindent
 \lstset{language=C++, columns=flexible, tabsize=4, frame=shadowbox, showstringspaces=false, breaklines=true, upquote=true, basicstyle=\normalsize}
-\begin{enumerate}
-\includegraphics[page=2, width=\textwidth]{1.pdf}
-\lstinputlisting{1.c}	
-\includegraphics[width=\textwidth]{1.png}	
-\lstinputlisting{2.c}	
-\includegraphics[width=\textwidth]{2.png}	
-
 \includegraphics[page=3, width=\textwidth]{1.pdf}
-\lstinputlisting{3.c}	
-\includegraphics[width=\textwidth]{3.png}	
-\lstinputlisting{4.c}	
-\includegraphics[width=\textwidth]{4.png}	
+\begin{enumerate}
+\item 모든 합을 구한뒤, 1부터 N까지의 합에서 뺀다.
+\item 
+	i 1 to N : sum += ar[i] \\
+	return N(N+1)/2 - sum
+\item
+\lstinputlisting{1.cpp}	
+\item
+\includegraphics[width=\textwidth]{1.png}	
+\end{enumerate}
+
+
+
+
 
 
 \includegraphics[page=4, width=\textwidth]{1.pdf}
-\lstinputlisting{5.c}	
-\includegraphics[width=\textwidth]{5.png}	
+\begin{enumerate}
+	\item 
+	while M \textless 0 :\\
+		for i 0 to N :\\
+			while M\textgreater c[i] : M -= c[i], coin++\\
+\item
+\lstinputlisting{2.cpp}	
+\includegraphics[width=\textwidth]{2.png}	
+\item
+	select a coin\\
+	M -= coin\\
+	if M != 0 : repeat selecting
 
-\includegraphics[page=5, width=\textwidth]{1.pdf}
-\lstinputlisting{6.c}	
+\item 
+\lstinputlisting{3.cpp}	
+\includegraphics[width=\textwidth]{3.png}	
+
+\item
+	15, 왜냐하면 한 코인의 가치의 두배를 만족시키는 자신보다 높은 값의 코인과 작은 값의 코인의 조합이 존재해야 한다.
+\item
+\lstinputlisting{6.cpp}	
 \includegraphics[width=\textwidth]{6.png}	
-
+모든 경우에 동일하므로 아무런 출력이 발생하지 않았다.
 
 \end{enumerate}
+
 
 \end{document}
