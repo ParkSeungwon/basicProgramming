@@ -1,5 +1,6 @@
 #include<string>
 #include<random>
+#include<cstring>
 #include<iostream>
 using namespace std;
 
@@ -29,6 +30,27 @@ void quick_sort(int* p, int* q) {
 	quick_sort(q+1, end); 
 }
 
+void merge(int* p, int* m, int* q) {
+	int sz = q - p;
+	int ar[sz];
+	int* const partition = m;
+	int* const start = p;
+	for(int i=0; i<sz; i++) {
+		if(p == partition) ar[i] = *m++;
+		else if(m == q) ar[i] = *p++;
+		else ar[i] = *p < *m ? *p++ : *m++;
+	}
+	memcpy(start, ar, sizeof(ar));
+}
+
+void merge_sort(int* p, int* q) {
+	if(q - p <= 1) return;
+	int middle = (q - p) / 2;
+	merge_sort(p, p + middle);
+	merge_sort(p + middle, q);
+	merge(p, p + middle, q);
+}
+
 bool is_palindrome(char* f, char* r) {
 	if(f >= r) return true;
 	if(*f == *r) return is_palindrome(f+1, r-1);
@@ -49,7 +71,10 @@ bool check_ar(int* p, int* q) {
 }
 
 int main(int ac, char** av) {
-	int ar[10000];
+	int ar[] = {1,2,5,3,8,2,1,2,10,2};
+	merge_sort(ar, ar+10);
+	for(int i=0; i<10; i++) cout << ar[i] << ' ';
+/*	int ar[10000];
 	uniform_int_distribution<> di(1,20000);
 	random_device rd;
 	for(int j=0; j<1; j++) {
@@ -58,6 +83,6 @@ int main(int ac, char** av) {
 		for(int i=0; i<10000; i++) cout << ar[i] << ' ';
 		cout << endl;
 		cout << (check_ar(ar, ar+10000) ? "well" : "not") << " alligned" << endl;
-	}
+	}*/
 }
 
