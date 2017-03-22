@@ -17,7 +17,7 @@
 	\centering
 	\pgfornament[width=12cm,color=teal]{84}\\
 	\vspace{1cm}
-	\fontsize{50}{50} \selectfont {컴퓨터 그래픽스 입문}\\
+	\fontsize{50}{50} \selectfont {컴퓨터 알고리즘과 실습}\\
 		\pgfornament[width=12cm,color=teal]{88}\\
 	\vfill}
 \author{
@@ -41,80 +41,26 @@
 \pagenumbering{gobble}
 \noindent
 \lstset{language=C++, columns=flexible, tabsize=4, frame=shadowbox, showstringspaces=false, breaklines=true, upquote=true, basicstyle=\normalsize}
-\includegraphics[page=8, width=\textwidth]{1.pdf}
+\includegraphics[page=3, width=\textwidth]{1.pdf}
+\lstinputlisting{1.cpp}
+\includegraphics[width=\textwidth]{01.png}
+\includegraphics[page=6, width=\textwidth]{1.pdf}
+\lstinputlisting{2.cpp}
+\includegraphics[width=\textwidth]{02.png}
 
+\section{힙을 형성하는 과정에서의 힙의 형태}
+\includegraphics[width=0.5\textwidth]{1.png}
+\includegraphics[width=0.5\textwidth]{2.png}
+\includegraphics[width=0.5\textwidth]{3.png}
+\includegraphics[width=0.5\textwidth]{4.png}
+\includegraphics[width=0.5\textwidth]{5.png}
+\includegraphics[width=0.5\textwidth]{6.png}
 
-1. Draw a smiley as pretty as you can. You may google 'smiley face' for more an better references.(5)
-Scoring guide
-- Draw a color filled face : 1 point
-- Draw a smiley mouth : 1 point
-- Draw a eyes(left + right) : 2 point
-- How much pretty smiley face  : 1 point
-
-2. Move the smiley by up/down/left/right key inputs. (5)
-Scoring guide
-- move left : 1 point
-- move right : 1 point
-- move up : 1 point
-- move down : 1 point
-- how well did you write the report : 1 point
-
-
-Be careful) If you submit late, you will be deducted 50%.
-
-\begin{enumerate}
-\item 
-\begin{lstlisting}[mathescape]
-	M  40
-	c <- 25,20,15,10,5,1
-	cc <- 0,0,...
-	re <- 0,0,...
-	minx <- 1000
-	d <- 5
-	define F(m) : 
-		M -= c[m]
-		cc[m]++
-		if(!M) :
-			sum <- 0
-			for i -> d : sum += cc[i]
-			if sum < minc : 
-				minc = sum
-				for i -> d : re[i] = cc[i]
-		for i -> d : re[i] = cc[i]
-		M += c[m]
-		cc[m]--
-	define R() :
-		sum <- 0
-		for i -> d : F(i)
-		for i -> d : sum += re[i]
-		print coins, sum
-		for i -> d : print re[i]	
-	
-\end{lstlisting}
-	
-\item
-\lstinputlisting{3.cpp}	
-\item
-\includegraphics[width=\textwidth]{3.png}	
-\end{enumerate}
-
-\includegraphics[page=9, width=\textwidth]{1.pdf}
-
-1. 
-\begin{lstlisting}[mathescape]
-for i 0 -> end of list :
-	for j i+1 -> end of list :
-		if list[j] == list[i] : swap 
-\end{lstlisting}
-\lstinputlisting{4.cpp}
-\includegraphics[width=\textwidth]{4.png}
-
-\begin{lstlisting}[mathescape]
-define F(start_pointer, end_pointer) :
-	if start == end : return
-	for p from start to end : if(*start > *p) swap(p, start)
-	F(start + 1, end)
-\end{lstlisting}
-\lstinputlisting{5.cpp}
-\includegraphics[width=\textwidth]{5.png}
+\section{힙에서 원소를 빼어내는 과정에서의 힙의 형태}
+\includegraphics[width=0.5\textwidth]{7.png}
+\includegraphics[width=0.5\textwidth]{8.png}
+\includegraphics[width=0.5\textwidth]{9.png}
+\includegraphics[width=0.5\textwidth]{10.png}
+\includegraphics[width=0.5\textwidth]{11.png}
+\includegraphics[width=0.5\textwidth]{12.png}
 \end{document}
