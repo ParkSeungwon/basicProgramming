@@ -43,24 +43,21 @@
 \lstset{language=C++, columns=flexible, tabsize=4, frame=shadowbox, showstringspaces=false, breaklines=true, upquote=true, basicstyle=\normalsize}
 \includegraphics[page=3, width=\textwidth]{1.pdf}
 \lstinputlisting{1.cpp}
-\includegraphics[width=\textwidth]{01.png}
+\includegraphics[width=\textwidth]{1.png}
 \includegraphics[page=6, width=\textwidth]{1.pdf}
 \lstinputlisting{2.cpp}
-\includegraphics[width=\textwidth]{02.png}
+\includegraphics[width=\textwidth]{2.png}
+\includegraphics[page=7, width=\textwidth]{1.pdf}
+\includegraphics[page=8, width=\textwidth]{11.pdf}
+\includegraphics[page=9, width=\textwidth]{11.pdf}
+대각선으로 각 지점에 도달하는데에 걸리는 에지의 웨이트를 합하여 최고값을 쓴다.
+대각선을 도착지점을 향하여 전진시키며 위를 반복한다.
+다익스트라 알고리즘의 경우 음수로 웨이트를 변형하여 계산을 해보았으나, 다익스트라 알고리즘은 음수가 아닌 경우에만 최소 경로를 찾을 수가 있었다.
+롱기스트 패스를 찾는 일반적인 문제는 NP완전문제로 아직까지 그 해법이 알려지지 않았다.\\
 
-\section{힙을 형성하는 과정에서의 힙의 형태}
-\includegraphics[width=0.5\textwidth]{1.png}
-\includegraphics[width=0.5\textwidth]{2.png}
-\includegraphics[width=0.5\textwidth]{3.png}
-\includegraphics[width=0.5\textwidth]{4.png}
-\includegraphics[width=0.5\textwidth]{5.png}
-\includegraphics[width=0.5\textwidth]{6.png}
+for i 1 to 5 : for j 1 to 5 :\\
+$S_{i,j} \leftarrow max(\overrightarrow{W}_{i}+S_{i-1,j}, 
+S_{i,j-1}+W_j$\textdownarrow)
 
-\section{힙에서 원소를 빼어내는 과정에서의 힙의 형태}
-\includegraphics[width=0.5\textwidth]{7.png}
-\includegraphics[width=0.5\textwidth]{8.png}
-\includegraphics[width=0.5\textwidth]{9.png}
-\includegraphics[width=0.5\textwidth]{10.png}
-\includegraphics[width=0.5\textwidth]{11.png}
-\includegraphics[width=0.5\textwidth]{12.png}
+
 \end{document}
