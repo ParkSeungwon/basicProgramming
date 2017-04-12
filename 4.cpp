@@ -1,21 +1,22 @@
 //2016110056 박승원
 #include<iostream>
+#include<chrono>
 using namespace std;
-int k=0;
-bool expect(int m, int n) {
-	k++;
-	if(!m && !n) return false;
-	if(m>0 && n>0)  return !(expect(m-1, n) && expect(m,n-1) && expect(m-1,n-1));
-	else if(!m) return !expect(m, n-1);
-	else if(!n) return !expect(m-1,n);
-}
 
-int main()
+
+int main(int ac, char** av)
 {
-	expect(9,9);
-//	for(int i=0; i<10; i++) {
-//		for(int j=0; j<10; j++) cout << expect(j, i) << ' ';
-//		cout << endl;
-//	}
-	cout << k << endl;
+	auto from = chrono::system_clock::now();
+	int n = atoi(av[1]);
+	int ar[n+1];
+	ar[n] = 0;
+	for(int i=n-1; i>0; i--) {
+		ar[i] = ar[i+1] + 1;
+		if(i*2 <= n) ar[i] = std::min(ar[i], ar[i*2]+1);
+		if(i*3 <= n) ar[i] = std::min(ar[i], ar[i*3]+1);
+	}
+
+	cout << ar[1] << endl;
+	auto to = chrono::system_clock::now();
+	cout << (to - from).count()/1000 << " miliseconds" << endl;
 }
