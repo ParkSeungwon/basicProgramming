@@ -1,96 +1,80 @@
 //2016110056 박승원
-#include <stdio.h>
+#include<cmath>
 #include <time.h>
-#include <stdlib.h>
-#include <string.h>
+#include<string.h>
 #include<iostream>
+#include<chrono>
 using namespace std;
+using namespace chrono;
 
-typedef struct Tree {
-	int num;
-	struct Tree *left, *right;
-} Tree;
+char text[] = "A STRING SEARCHING EXAMPLE CONSISTING OF A GIVEN PATTERN STRING";
+char pattern[] = "STRING";
+const int t_sz = sizeof(text)-1;
+const int p_sz = sizeof(pattern)-1;
 
-Tree* insert(Tree* p, int num) {//삽입 재귀 함수
-	if(!p) {
-		p = (Tree*)malloc(sizeof(Tree));
-		p->num = num;
-		p->left = NULL;
-		p->right = NULL;
-	} else if(num > p->num) p->right = insert(p->right, num);
-	else p->left = insert(p->left, num);
-	return p;//리턴값은 (재귀적 호출시)항상 부모와 연결할 값이라고 생각하면 된다.
-}
-
-void show(Tree* p) {//중위 순회 출력 함수
-	if(p->left) show(p->left);
-	printf("%d\n", p->num);
-	if(p->right) show(p->right);
-}
-
-Tree* del_node(Tree* p) {//p가 가르키는 노드를 삭제한다.
-	if(!p->left && !p->right) {//자식이 없을 때
-		free(p);
-		return NULL;
-	} else if(!p->right) {//오른쪽만 널일때
-		Tree *r = p->left;
-		free(p);
-		return r;//리턴값을 대입하는 형식으로 부모와 연결한다.
-	} else if(!p->left) {//왼쪽만 널일때
-		Tree *r = p->right;
-		free(p);
-		return r;
-	} else {//둘 다 자식일때
-		Tree* prev = p;
-		Tree* q = p->right;
-		for(; q->left; q = q->left) prev = q;
-		p->num = q->num;
-		if(prev == p) prev->right = del_node(q);//q를 재귀적으로 삭제하고 이어준다.
-		else prev->left = del_node(q);
-		return p;
+void brute()
+{
+	for(int i=0; i<t_sz; i++) {
+		bool match = true;
+		for(int j=0; j<p_sz; j++) if(text[i+j] != pattern[j]) match = false;
+		if(match) cout << pattern << " is found at index " << i << endl;
 	}
 }
 
-Tree* del(Tree* p, int num) {//num 요소를 삭제한다. 
-	if(!p) return NULL;
-	if(p->num == num) return del_node(p);//del_node를 호출한다.
-	if(p->num > num) p->left = del(p->left, num);
-	if(p->num < num) p->right = del(p->right, num);
-	return p;
+unsigned long get_num_from_string(char* p, int n)
+{///포인터 p로부터 n개의 문자를 하나의 숫자로 리턴한다.
+	unsigned long r = 0;
+	for(long i = n-1, m = 1; i >= 0; i--, m *= 26) r += (*(p+i) - 'A') * m;
+	return r;
 }
 
-Tree* find(Tree* p, int num) {//조회
-	if(!p) return NULL;
-	if(p->num == num) return p;
-	if(p->num > num) return find(p->left, num);
-	if(p->num < num) return find(p->right, num);
-}
-
-void free_tree(Tree* p) {
-	if(p->left) free_tree(p->left);
-	if(p->right) free_tree(p->right);
-	free(p);
-}
-
-int main()
+void rk()
 {
-	Tree* tree = NULL;
-	tree = insert(tree, 20);//최초 삽입 이외에는
-	insert(tree, 6);//tree에서는 삽입시 루트가 바뀌지 않으므로 
-	insert(tree, 2);//대입하지 않아도 된다.
-	insert(tree, 4);
-	insert(tree, 16);
-	insert(tree, 10);
-	insert(tree, 8);
-	insert(tree, 12);
-	insert(tree, 14);
-	insert(tree, 9);
-	show(tree);
-	printf("===============\n");
-	Tree* p = find(tree, 10);//조회 
-	cout << p->left->num << " , " << p->right->num << endl;
-	del(tree, 6);
-	p = find(tree, 10);//조회 
-	cout << p->left->num << " , " << p->right->num << endl;
-	free_tree(tree);
+	unsigned long pi = get_num_from_string(pattern, p_sz);
+	for(int i=1; i<t_sz-p_sz+1; i++) 
+		if(get_num_from_string(text+i, p_sz) == pi) 
+			cout << pattern << " is found at index " << i << endl;
+}
+
+int prefixTable[p_sz];
+int generate_table(char* p, int n)
+{///포인터로부터 n개의 문자에서 최대 접두부의 인덱스를 반환한다..
+	for(int i=n-1; i>0; i--) {//i = string length
+		bool match = true;
+		for(int j=0; j<i; j++) if(p[j] != p[n-i+j]) match = false;
+		if(match) return i-1;
+	}
+	return -1;
+}
+
+void kmp()
+{
+	for(int i=0; i<p_sz; i++) prefixTable[i] = generate_table(pattern, i+1);
+	for(char* pt = text; pt != text + t_sz;) {
+		for(char *pp = pattern; pp != pattern + p_sz;) {
+			if(*pt != *pp) {
+				if(pp == pattern) pt++;
+				pp = pattern + prefixTable[pp - pattern] + 1;
+			} else pt++, pp++;
+		}
+		cout << pattern << " is found at index " << pt - text - p_sz << endl;
+	}
+}
+	
+int main() 
+{
+	auto from = system_clock::now();
+	brute();
+	auto to = system_clock::now();
+	cout << "brute " << (to - from).count()/1000 << " miliseconds" << endl;
+	
+	from = system_clock::now();
+	rk();
+	to = system_clock::now();
+	cout << "rk " << (to - from).count()/1000 << " miliseconds" << endl;
+	
+	from = system_clock::now();
+	kmp();
+	to = system_clock::now();
+	cout << "kmp " << (to - from).count()/1000 << " miliseconds" << endl;
 }

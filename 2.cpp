@@ -1,17 +1,13 @@
 //2016110056 박승원 
-#include<iostream>
+#include<fstream>
+#include<random>
 using namespace std;
-
-int fibo(int n) {//print 1 to n fibo array
-	int a[3];
-	a[0] = 1; a[1] = 1; a[2] = 0;
-	for(int i=1; i<=n; i++) {
-		a[i%3] = a[(i-1)%3] + a[(i+1)%3];
-		cout << a[i%3] << ' ';
-	}
-}
 
 int main()
 {
-	fibo(20);
+	uniform_int_distribution<> di{0,3};
+	random_device rd;
+	char genom[5] = "ACGT";
+	ofstream f("input.txt");
+	for(int i=0; i<1000000; i++) f << genom[di(rd)];
 }
