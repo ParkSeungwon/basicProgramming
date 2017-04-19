@@ -7,8 +7,8 @@
 using namespace std;
 using namespace chrono;
 
-char text[] = "A STRING SEARCHING EXAMPLE CONSISTING OF A GIVEN PATTERN STRING";
-char pattern[] = "STRING";
+char text[] = "abababacabababcacaabbc";//A STRING SEARCHING EXAMPLE CONSISTING OF A GIVEN PATTERN STRING";
+char pattern[] = "abababca";
 const int t_sz = sizeof(text)-1;
 const int p_sz = sizeof(pattern)-1;
 
@@ -24,7 +24,7 @@ void brute()
 unsigned long get_num_from_string(char* p, int n)
 {///포인터 p로부터 n개의 문자를 하나의 숫자로 리턴한다.
 	unsigned long r = 0;
-	for(long i = n-1, m = 1; i >= 0; i--, m *= 26) r += (*(p+i) - 'A') * m;
+	for(long i = n-1, m = 1; i >= 0; i--, m *= 26) r += (*(p+i) - 'a') * m;
 	return r;
 }
 
@@ -49,15 +49,15 @@ int generate_table(char* p, int n)
 
 void kmp()
 {
-	for(int i=0; i<p_sz; i++) prefixTable[i] = generate_table(pattern, i+1);
-	for(char* pt = text; pt != text + t_sz;) {
-		for(char *pp = pattern; pp != pattern + p_sz;) {
-			if(*pt != *pp) {
-				if(pp == pattern) pt++;
-				pp = pattern + prefixTable[pp - pattern] + 1;
-			} else pt++, pp++;
-		}
-		cout << pattern << " is found at index " << pt - text - p_sz << endl;
+	prefixTable[0] = -1;
+	for(int i=0; i<p_sz; i++) prefixTable[i+1] = generate_table(pattern, i+1);
+	for(char *pp = pattern, *pt = text; pt != text + t_sz;) {
+		if(*pt != *pp) {
+			if(pp == pattern) pt++;
+			pp = pattern + prefixTable[pp - pattern] + 1;
+		} else pt++, pp++;
+		if(pp == pattern + p_sz) 
+			cout << pattern << " is found at index " << pt - text - p_sz << endl;
 	}
 }
 	
