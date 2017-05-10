@@ -150,29 +150,20 @@ public:
 				edge_count++;
 			}
 		}
-		for(p = root; p; p = p->vertex) if(p->v == 1) break;
-		euler_visit(p, 1, edge_count);
+		for(p = root; p; p = p->vertex) if(p->v == 1) break;//starting point
+		euler_visit(p, 0, edge_count);
 	}
 
 	void euler_visit(Vertex<T>* p, int n, int edge_count) {
-		static std::vector<Vertex<T>*> vec;
-		vec.push_back(p);
-//		bool succeed = true;
-//		for(Vertex<T>* v = root; v; v = v->vertex) 
-//			for(Edge<T>* e = v->edge; e; e = e->edge) 
-//				if(e->v != 1) succeed = false;
-		if(n == edge_count) {
-			for(auto& a : vec) std::cout << a->data << ' ';
-			std::cout << std::endl;
-		}
+		if(n == edge_count) view();//if all the edges are visited
 		for(Edge<T>* e = p->edge; e; e = e->edge) {
-			if(!e->v) {
-				e->v = 1;
+			if(!e->v) {//if not visited
+				e->v = 1;//mark visited
+				e->weight = n+1;//use weight to show visit order
 				euler_visit(e->vertex, n+1, edge_count);
-				e->v = 0;
+				e->v = 0;//remove visited mark
 			}
 		}
-		vec.pop_back();
 	}
 
 	

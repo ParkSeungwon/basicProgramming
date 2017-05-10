@@ -25,8 +25,14 @@ int main()
 		imer.insert(s);
 	}
 	for(auto a : imer) euler.insert_vertex(a);
-	for(auto a : imer) for(auto b : imer) 
-		if(a != b && a[1] == b[0]) euler.insert_edge(a, b, 0);
+	euler.insert_edge("AA", "AC", 0);
+	euler.insert_edge("AC", "CT", 0);
+	euler.insert_edge("CT", "TT", 0);
+	euler.insert_edge("TT", "TA", 0);
+	euler.insert_edge("AG", "GT", 0);
+	euler.insert_edge("AA", "AG", 0);
+	euler.insert_edge("GT", "TT", 0);
+	euler.insert_edge("TA", "AA", 0);
 	cout << endl << "Eulerian" << endl;
 	euler.view();
 	euler.depth();

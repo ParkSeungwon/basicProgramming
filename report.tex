@@ -53,13 +53,55 @@
 \newpage
 \includegraphics[page=4, width=\textwidth]{1.pdf}
 \lstinputlisting{3.cpp}
+프로그램에서 설정한대로 에지를 설정했을 경우, 해밀턴은 한 경로가 존재하고,
+오일러에서는 결과에서 보여지듯이 두 가지의 경로가 존재한다.
+
+해밀턴:AGTAAACTTT\\
+오일러:AACTTAAGTT, AAGTTAACT
+
+오일러에서 결과화면에 보이는 $<$AA,AC$>$뒤의 숫자가 순서이다.
+프로그램에서 쓰인 그래프 헤더는 맨 마지막에 첨부하였다.
+
 \includegraphics[width=\textwidth]{3.png}
 
+\begin{lstlisting}
+	void euler() {//for directed graph
+		clearv();
+		Vertex<T>* p;
+		int edge_count = 0;
+		for(p = root; p; p = p->vertex) {
+			for(Edge<T>* e = p->edge; e; e = e->edge) {
+				p->v++;//out grade
+				e->vertex->v--;//in grade
+				edge_count++;
+			}
+		}
+		for(p = root; p; p = p->vertex) if(p->v == 1) break;//starting point
+		euler_visit(p, 0, edge_count);
+	}
+	
+	void euler_visit(Vertex<T>* p, int n, int edge_count) {
+		if(n == edge_count) view();//if all the edges are visited
+		for(Edge<T>* e = p->edge; e; e = e->edge) {
+			if(!e->v) {//if not visited
+				e->v = 1;//mark visited
+				e->weight = n+1;//use weight to show visit order
+				euler_visit(e->vertex, n+1, edge_count);
+				e->v = 0;//remove visited mark
+			}
+		}
+	}
+\end{lstlisting}
 \includegraphics[page=5, width=0.97\textwidth]{1.pdf}
-\lstinputlisting{4.cpp}
+30 * 3e+10 * 3e+09 / 1e+07 / 60 / 60 /24 /365\\
+약800만년 
 
 \includegraphics[page=6, width=0.97\textwidth]{1.pdf}
-\lstinputlisting{5.cpp}
+3e+10/4**10 * 3e+9 /1e+7 /60 /60 /24 / 365\\
+약 100일
+
+3e+10/4**15 * 3e+9 /1e+7 /60 /60 /24 \\
+약 2.3시간
 
 \lstinputlisting[caption=tgraph.h]{tgraph.h}
 
