@@ -1,35 +1,36 @@
 //2016110056 박승원 
-#include<array>
-#include<vector>
-#include<iostream>
-#include<algorithm>
+#include<string>
+#include<set>
+#include"tgraph.h"
 using namespace std;
-
-vector<array<int, 3>> v;
-void Cameleon(int a, int b, int c)
-{
-	int k=0;
-	if(!a) k++; if(!b) k++; if(!c) k++;
-	if(k == 2) {
-		cout << "changed to one color" << endl;
-		return;
-	}
-	if(a<0 || b<0 || c<0) return;
-	array<int, 3> ar;
-	ar[0] = a; ar[1] = b; ar[2] = c;
-	if(find(v.begin(), v.end(), ar) != v.end()) return;
-	else v.push_back(ar);
-	Cameleon(a-1, b-1, c+2);
-	Cameleon(a+2, b-1, c-1);
-	Cameleon(a-1, b+2, c-1);
-}
-
 
 int main()
 {
-	cout << "first case" << endl;
-	Cameleon(1,3,5);
-	cout << "second case" << endl;
-	Cameleon(37,61,27);
+	const string vert[] = {"AGT", "AAA", "ACT", "AAC", "CTT", "GTA", "TTT", "TAA"};
+
+	Graph<string> gr;
+	for(int i=0; i<8; i++) gr.insert_vertex(vert[i]);
+	for(int i=0; i<8; i++) for(int j=0; j<8; j++) 
+		if(i != j && vert[i][1] == vert[j][0] && vert[i][2] == vert[j][1])
+			gr.insert_edge(vert[i], vert[j], 0);
+	cout << "Hamiltonian" << endl;
+	gr.view();
+	gr.depth();
+
+	Graph<string> euler;
+	set<string> imer;
+	for(auto s : vert) {
+		imer.insert(s.substr(1));
+		s.pop_back();
+		imer.insert(s);
+	}
+	for(auto a : imer) euler.insert_vertex(a);
+	for(auto a : imer) for(auto b : imer) 
+		if(a != b && a[1] == b[0]) euler.insert_edge(a, b, 0);
+	cout << endl << "Eulerian" << endl;
+	euler.view();
+	euler.depth();
+	cout << endl;
+	euler.euler();
 }
 
