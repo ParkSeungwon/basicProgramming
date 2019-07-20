@@ -8,3 +8,7 @@
 *.aux
 *.gz
 *.jpg
+find
+.
+-size
++3M
